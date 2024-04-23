@@ -19,7 +19,6 @@ body{
 }
 .answers{
     margin-top: 30px;
-    font-size: 30px;
     display: flex;
     justify-content: space-evenly;
 
@@ -34,16 +33,17 @@ body{
 }
 
 .butt{
-    margin-top: 50px;
+    margin-top: 100px;
     margin-left: 10px;
     border: 2px solid #FFC0CB;
-    width: fit-content;
+    width: 150px;
     padding: 20px;
     border-radius: 13px;
     font-size: 20px;
     display: flex;
     align-items: center;
     background-color: white;
+    justify-content: center;
     
 }
 .games{
@@ -52,4 +52,43 @@ body{
 }
 h1{
     font-size: 60px;
+}
+.counter{
+    text-align: left;
+}
+
+@media (orientation: portrait) and (max-width: 500px){
+    .question{
+        font-size: 60px;
+    }
+    .butt{
+        margin-top: 50px;
+        width: 50px;
+        font-size: 15px;
+    }
+    .answer{
+        width: 80px;
+        height: 80px;
+        margin-left: 5px;
+    }
+    h1{
+        font-size: 40px;
+    }
+    h2{
+        font-size: 30px;
+    }
+    h3{
+        font-size: 20px;
+    }
+}
+@media (min-width: 500px) and (max-width: 900px){
+    .butt{
+        width: 100px;
+    }
+    .answer{
+        width: 90px;
+    }
+    .question{
+        font-size: 50px;
+    }
 }
