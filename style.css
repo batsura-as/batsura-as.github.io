@@ -56,7 +56,18 @@ h1{
 .counter{
     text-align: left;
 }
-
+.block{
+    display: none;
+}
+.results{
+    display: none;
+}
+.h{
+    font-size: 50px;
+}
+.to-main{
+    margin-left:98px;
+}
 @media (orientation: portrait) and (max-width: 500px){
     .question{
         font-size: 60px;
@@ -80,6 +91,10 @@ h1{
     h3{
         font-size: 20px;
     }
+    .to-main{
+        width: 100px;
+        margin-left: 50px;
+    }
 }
 @media (min-width: 500px) and (max-width: 900px){
     .butt{
@@ -90,5 +105,8 @@ h1{
     }
     .question{
         font-size: 50px;
+    }
+    .to-main{
+        margin-left: 20px;
     }
 }

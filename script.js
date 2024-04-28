@@ -1,3 +1,97 @@
 let m_menu = document.querySelector('.main_menu')
 let block = document.querySelector('.block')
 let results = document.querySelector('.results')
+let b_answer = document.querySelectorAll('.answer')
+let time_g = document.querySelector('.time-game')
+let life_g = document.querySelector('.life-game')
+let super_g = document.querySelector('.super-game')
+let b_main = document.querySelector('.to-main')
+let c_time = document.querySelector('.time')
+let c_score = document.querySelector('.score')
+let result = document.querySelector('.res')
+let question = document.querySelector('.question')
+let score = 0
+let time = 0
+let lifes = 0
+let right_ans = 0
+let m_colors = ['red', 'green', 'blue', 'yellow', 'purple', 'pink', 'orange', 'black']
+class Question{
+    constructor(){
+        let m_colors_copy = m_colors
+        let cor_color = randint(0,7)
+        this.que = m_colors_copy[cor_color]
+        this.cor_ans = this.que
+        m_colors_copy.splice(cor_color, 1)
+        this.que_color = m_colors_copy[randint(0,6)]
+        shuffle(m_colors_copy)
+        this.answs = [this.cor_ans, m_colors_copy[0], m_colors_copy[1], m_colors_copy[2]]
+        shuffle(this.answs)
+    }
+    display(){
+        question.innerHTML = this.que
+        question.style.color = this.que_color
+        for (let i=0; i < this.answs.length; i +=1){
+            b_answer[i].style.background = this.answs[i]
+        }
+    }
+}
+function randint(min, max){
+    return Math.round(Math.random() * (max-min)+min)
+}
+function shuffle(array) {
+    let currentIndex = array.length,randomIndex;
+    while (currentIndex != 0) { 
+        randomIndex = Math.floor(Math.random() * currentIndex); 
+        currentIndex--;
+        [array[currentIndex], array[randomIndex]] = [  
+        array[randomIndex], array[currentIndex]];}
+    return array
+}
+time_g.addEventListener('click', function(){
+    now_que = new Question()
+    now_que.display()
+    m_menu.style.display = 'none'
+    block.style.display = 'block'
+    score = 0
+    time = 10
+    for (let i=0; i >10; i += 1){
+        setTimeout(function(){
+            c_time.innerHTML = time - i
+        }, 100)
+    }
+    setTimeout(function(){
+        results.style.display = 'block'
+        block.style.display = 'none'
+
+    },10000)
+
+
+})
+for (let i = 0; i < b_answer.length; i+=1){
+    b_answer[i].addEventListener('click', function(){
+        if(b_answer[i].style.background == now_que.cor_ans){
+            right_ans +=1
+            b_answer[i].style.border = '5px solid'
+            anime({
+            targets: b_answer[i],
+            duration: 300,
+            border:  '1px solid green',
+            easing: 'linear'
+            })
+        }
+        else{
+            b_answer[i].style.border = '5px solid'
+            anime({
+            targets: b_answer[i],
+            duration: 300,
+            border: '1px solid red',
+            easing: 'linear'
+            })
+        }
+        c_score.innerHTML = right_ans
+        m_colors = ['red', 'green', 'blue', 'yellow', 'purple', 'pink', 'orange', 'black']
+        score +=1
+        now_que = new Question()
+        now_que.display()
+    })
+}
