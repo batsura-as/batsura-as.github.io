@@ -23,6 +23,10 @@ body{
     justify-content: space-evenly;
 
 }
+.res{
+    margin-top: 20px;
+    font-size: 100px;
+}
 .answer{
     margin-left: 10px;
     border: 1px solid #FFC0CB;
@@ -33,7 +37,7 @@ body{
 }
 
 .butt{
-    margin-top: 100px;
+    margin-top: 50px;
     margin-left: 10px;
     border: 2px solid #FFC0CB;
     width: 150px;

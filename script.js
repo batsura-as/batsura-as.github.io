@@ -10,6 +10,12 @@ let c_time = document.querySelector('.time')
 let c_score = document.querySelector('.score')
 let result = document.querySelector('.res')
 let question = document.querySelector('.question')
+let c_life = document.querySelector('.life')
+let c_counter = document.querySelector('.counter')
+let t_life = document.querySelector('.t_life')
+let t_time = document.querySelector('.t_time')
+let t_score = document.querySelector('.t_score')
+let exit = document.querySelector('.exit')
 let score = 0
 let time = 0
 let lifes = 0
@@ -50,22 +56,46 @@ function shuffle(array) {
 time_g.addEventListener('click', function(){
     now_que = new Question()
     now_que.display()
+    c_counter.style.display = 'block'
+    t_life.style.display = 'none'
+    exit.style.display = 'none'
     m_menu.style.display = 'none'
     block.style.display = 'block'
     score = 0
-    time = 10
-    for (let i=0; i >10; i += 1){
+    time = 9
+    a = 0
+    for (let i=0; i<10; i += 1){
         setTimeout(function(){
             c_time.innerHTML = time - i
-        }, 100)
+        }, a +=1000)
     }
     setTimeout(function(){
         results.style.display = 'block'
         block.style.display = 'none'
-
+        result.innerHTML = `${right_ans} из ${score}`
     },10000)
+b_main.addEventListener('click', function(){
+    results.style.display = 'none'
+    m_menu.style.display = 'block'
+    right_ans = 0
+    c_score.innerHTML = 0
+    c_time.innerHTML = 10
+})
+life_g.addEventListener('click', function(){
+    now_que = new Question()
+    now_que.display()
+    lifes = 5
+    block.style.display = 'block'
+    c_counter.style.display = 'block'
+    t_time.style.display = 'none'
+    t_score.style.display = 'none'
+    m_menu.style.display = 'none'
+})
+exit.addEventListener('click', function(){
+    m_menu.style.display = 'block'
+    block.style.display = 'none'
 
-
+})
 })
 for (let i = 0; i < b_answer.length; i+=1){
     b_answer[i].addEventListener('click', function(){
@@ -87,6 +117,12 @@ for (let i = 0; i < b_answer.length; i+=1){
             border: '1px solid red',
             easing: 'linear'
             })
+            lifes -=1
+            if (lifes==0){
+                block.style.display = 'none'
+                results.style.display = 'block'
+                result.innerHTML = 'Вы проиграли'
+            }
         }
         c_score.innerHTML = right_ans
         m_colors = ['red', 'green', 'blue', 'yellow', 'purple', 'pink', 'orange', 'black']
