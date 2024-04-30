@@ -25,7 +25,8 @@ body{
 }
 .res{
     margin-top: 20px;
-    font-size: 100px;
+    font-size: 90px;
+    margin-bottom: 50px;
 }
 .answer{
     margin-left: 10px;
@@ -48,6 +49,7 @@ body{
     align-items: center;
     background-color: white;
     justify-content: center;
+    cursor: pointer;
     
 }
 .games{
@@ -57,20 +59,18 @@ body{
 h1{
     font-size: 60px;
 }
-.counter{
-    text-align: left;
-}
 .block{
     display: none;
 }
 .results{
     display: none;
 }
+
 .h{
     font-size: 50px;
 }
 .to-main{
-    margin-left:98px;
+    margin: 0 auto;
 }
 @media (orientation: portrait) and (max-width: 500px){
     .question{
