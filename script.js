@@ -4,14 +4,14 @@ let results = document.querySelector('.results')
 let b_answer = document.querySelectorAll('.answer')
 let time_g = document.querySelector('.time-game')
 let life_g = document.querySelector('.life-game')
-let super_g = document.querySelector('.super-game')
 let b_main = document.querySelector('.to-main')
 let c_time = document.querySelector('.time')
 let c_score = document.querySelector('.score')
 let result = document.querySelector('.res')
 let question = document.querySelector('.question')
 let c_life = document.querySelector('.life')
-let c_counter = document.querySelector('.counter')
+let coun_life = document.querySelector('.counter-life')
+let coun_time = document.querySelector('.counter-time')
 let t_life = document.querySelector('.t_life')
 let t_time = document.querySelector('.t_time')
 let t_score = document.querySelector('.t_score')
@@ -32,6 +32,7 @@ class Question{
         shuffle(m_colors_copy)
         this.answs = [this.cor_ans, m_colors_copy[0], m_colors_copy[1], m_colors_copy[2]]
         shuffle(this.answs)
+
     }
     display(){
         question.innerHTML = this.que
@@ -56,9 +57,8 @@ function shuffle(array) {
 time_g.addEventListener('click', function(){
     now_que = new Question()
     now_que.display()
-    c_counter.style.display = 'block'
-    t_life.style.display = 'none'
-    exit.style.display = 'none'
+    coun_time.style.display = 'block'
+    coun_life.style.display = 'none'
     m_menu.style.display = 'none'
     block.style.display = 'block'
     score = 0
@@ -74,6 +74,8 @@ time_g.addEventListener('click', function(){
         block.style.display = 'none'
         result.innerHTML = `${right_ans} из ${score}`
     },10000)
+})
+
 b_main.addEventListener('click', function(){
     results.style.display = 'none'
     m_menu.style.display = 'block'
@@ -86,17 +88,17 @@ life_g.addEventListener('click', function(){
     now_que.display()
     lifes = 5
     block.style.display = 'block'
-    c_counter.style.display = 'block'
-    t_time.style.display = 'none'
-    t_score.style.display = 'none'
+    coun_time.style.display = 'none'
+    coun_life.style.display = 'block'
     m_menu.style.display = 'none'
+    c_life.innerHTML = 5
 })
 exit.addEventListener('click', function(){
     m_menu.style.display = 'block'
     block.style.display = 'none'
 
 })
-})
+
 for (let i = 0; i < b_answer.length; i+=1){
     b_answer[i].addEventListener('click', function(){
         if(b_answer[i].style.background == now_que.cor_ans){
@@ -117,11 +119,13 @@ for (let i = 0; i < b_answer.length; i+=1){
             border: '1px solid red',
             easing: 'linear'
             })
+            c_life.innerHTML = lifes
             lifes -=1
             if (lifes==0){
                 block.style.display = 'none'
                 results.style.display = 'block'
                 result.innerHTML = 'Вы проиграли'
+                
             }
         }
         c_score.innerHTML = right_ans
