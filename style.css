@@ -72,6 +72,13 @@ h1{
 .to-main{
     margin: 0 auto;
 }
+#clock {
+	height: 50px;
+	width: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 @media (orientation: portrait) and (max-width: 500px){
     .question{
         font-size: 60px;
